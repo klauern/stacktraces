@@ -9,3 +9,10 @@
 (defn get-errors 
   ([] (http/get (str url "/errors"))) 
   ([err-code] (http/get (str url "/errors/" err-code) default-http-parms)))
+
+(defn get-sxch-sites 
+  ([] (http/get (str url "/sites")))
+  ([opts] (http/get ()))
+  ([page per-page] (http/get (str url "/sites/" ))))
+
+
