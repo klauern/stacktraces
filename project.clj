@@ -4,4 +4,4 @@
                  [clj-http "0.3.2"]
                  [cheshire "2.2.0"]]
   :dev-dependencies [[marginalia "0.7.0-SNAPSHOT"]
-                     [midje "1.3.2-SNAPSHOT"]])
+                     [midje "1.3.1"]])
