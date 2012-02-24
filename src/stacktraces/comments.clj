@@ -7,7 +7,7 @@
   "
   (request "/comments"))
 
-(defn by-id []
+(defn by-id [ids]
   "Retrieve comments by id (up to 100). See https://api.stackexchange.com/docs/comments-by-ids
   "
   {:pre [<= (count ids)]}
