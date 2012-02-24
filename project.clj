@@ -4,5 +4,5 @@
                  [clj-http "0.3.2"]
                  [cheshire "2.2.0"]]
   :dev-dependencies [[marginalia "0.7.0-SNAPSHOT"]
-                     [midje "1.3.1"]
+                     [midje "1.3.1" :exclusions [org.clojure/clojure]]
                      [lein-midje "1.0.8"]])
