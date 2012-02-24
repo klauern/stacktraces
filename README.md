@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/klauern/stacktraces.png?branch=master)](http://travis-ci.org/klauern/stacktraces)
+
 # stacktraces
 
 A hack to create an API for [StackExchange][stx]'s RESTful API in Clojure.
