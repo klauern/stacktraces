@@ -8,12 +8,16 @@ Site name can be supplied, otherwise defaults to 'stackoverflow'."
   ([] (request "/badges?site=stackoverflow"))
   ([site] (request (str "/badges?site=" site))))
 
-(defn by-ids [ids & site]
+(defn by-ids
   "Get a list of badges by a vector of id's (up to 100)
   See https://api.stackexchange.com/docs/badges-by-ids for more information"
-  {:pre [(<= (count ids) 100)]}
-  ([ids]  (request (str "/badges/" (apply str (interpose ";" ids))) {"site" "stackoverflow"}))
-  ([ids site] (request (str "/badges" (apply str (interpose ";" ids))) {"site" site})))
+  
+  ([ids]
+    {:pre [(<= (count ids) 100)]}
+    (request (str "/badges/" (apply str (interpose ";" ids))) {"site" "stackoverflow"}))
+  ([ids site] 
+    {:pre [(<= (count ids) 100)]}
+    (request (str "/badges/" (apply str (interpose ";" ids))) {"site" site})))
 
 (defn by-name
   "Get a list of badges by name. See https://api.stackexchange.com/docs/badges-by-name"
