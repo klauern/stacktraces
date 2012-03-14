@@ -31,7 +31,7 @@
 
 (defn site-info [& site-name]
   "Get the Site info"
-  ([site-name] request "/info" {"site" site-name}))
+  ([site-name] (request "/info" {"site" site-name})))
 
 (defn get-sxch-names []
   "Gets a seq of StackExchange site names"
@@ -51,3 +51,10 @@
 (defn quota-remaining []
   "Gets the quota remaining"
   (:quota_remaining (:body (request "/info" {"site" "stackoverflow"}))))
+
+(defn privileges
+  "Get a list of all the privileges on the site and the
+amount of reputation needed to perform it.  Default to StackOverflow,
+can be passed in as a string like \"superuser\""
+  ([] (request "/privileges" {"site" "stackoverflow"}))
+  ([site] (request "/privileges" {"site" site})))
