@@ -9,9 +9,9 @@ Site name can be supplied, otherwise defaults to 'stackoverflow'."
   ([site] (request (str "/badges?site=" site))))
 
 (defn by-ids
-  "Get a list of badges by a vector of id's (up to 100)
+  "Get a list of badges by a vector of id's (up to 100).  site can be a string
+of the name of sites.  To get a list of sites, see 
   See https://api.stackexchange.com/docs/badges-by-ids for more information"
-  
   ([ids]
     {:pre [(<= (count ids) 100)]}
     (request (str "/badges/" (apply str (interpose ";" ids))) {"site" "stackoverflow"}))

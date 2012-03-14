@@ -37,3 +37,17 @@
   "Gets a seq of StackExchange site names"
   (map :name (:items (:body (get-sxch-sites)))))
 
+(defn get-sxch-api-names []
+  "Gets a seq of StackExchange API site names.  This is
+   for use when calling the many sites that require a site=? tag"
+  (map :api_site_parameter (:items (:body (get-sxch-sites)))))
+
+;; Have to find a better way to do this, but don't know how to 
+;; wrap an atom post-setting in the 'request call.
+;; Currently, this is a hack by way of actually wasting an HTTP request,
+;; and thereby decreasing your quota just by asking.  This is available
+;; on every request, but need to find out how to store the result of
+;; a request with this in it on every request.
+(defn quota-remaining []
+  "Gets the quota remaining"
+  (:quota_remaining (:body (request "/info" {"site" "stackoverflow"}))))
