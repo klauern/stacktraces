@@ -13,12 +13,9 @@
 
 (defn request
   "make an HTTP GET request agains the API, passing in any optional query params"
-  
   ([api-method] 
-    {:post [(swap! request-quota-left (:quota_remaining %))]}
     (http/get (str url api-method) default-http-params))
   ([api-method params]
-    {:post [(swap! request-quota-left (:quota_remaining %))]}
      (http/get (str url api-method "?") (merge default-http-params {:query-params params}))))
 
 (defn get-errors
@@ -32,9 +29,9 @@
   ([opts] (request "/sites" opts))
   ([page per-page] (request "/sites" {:page page :pagesize per-page})))
 
-(defn site-info [site-name]
+(defn site-info [& site-name]
   "Get the Site info"
-  (request "/info" {:site site-name}))
+  ([site-name] request "/info" {"site" site-name}))
 
 (defn get-sxch-names []
   "Gets a seq of StackExchange site names"

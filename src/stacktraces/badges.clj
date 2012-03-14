@@ -2,33 +2,35 @@
   (:use [stacktraces.core :only [request] ]))
 
 
-(defn badges [& site]
+(defn badges
   "Get the list of badges. See https://api.stackexchange.com/docs/badges.
 Site name can be supplied, otherwise defaults to 'stackoverflow'."
   ([] (request "/badges?site=stackoverflow"))
   ([site] (request (str "/badges?site=" site))))
 
-(defn by-ids [ids]
+(defn by-ids [ids & site]
   "Get a list of badges by a vector of id's (up to 100)
   See https://api.stackexchange.com/docs/badges-by-ids for more information"
-  {:pre [<= (count ids) 100]}
-  (request "/badges/" (apply str (interpose "," ids))))
+  {:pre [(<= (count ids) 100)]}
+  ([ids]  (request (str "/badges/" (apply str (interpose ";" ids))) {"site" "stackoverflow"}))
+  ([ids site] (request (str "/badges" (apply str (interpose ";" ids))) {"site" site})))
 
-(defn by-name []
+(defn by-name
   "Get a list of badges by name. See https://api.stackexchange.com/docs/badges-by-name"
-  (request "/badges/name"))
+  ([] (request "/badges/name" {"site" "stackoverflow"}))
+  ([site] (request "/badges/name" {"site" site})))
 
-(defn recipients []
+(defn recipients
   "Get a list of badge recipients. See https://api.stackexchange.com/docs/badge-recipients"
-  (request "/badges/recipients"))
+  ([] (request "/badges/recipients" {"site" "stackoverflow"}))
+  ([site] (request "/badges/recipients" {"site" site})))
 
 (defn recipients-by-id [ids]
   "Get a list of badges by recipient ids (up too 100 ids)"
   {:pre [<= (count ids) 100]}
-  (request (str "/badges/" (apply str (interpose "," ids)) "/recipients")))
+  (request (str "/badges/" (apply str (interpose ";" ids)) "/recipients")))
 
-(defn by-tag []
+(defn by-tag
   "Get badges awarded for specific tags. See https://api.stackexchange.com/docs/badges-by-tag"
-  (request "/badges/tag"))
-
-
+  ([] (request "/badges/tags" {"site" "stackoverflow"}))
+  ([site] (request "/badges/tags" {"site" site})))
