@@ -2,9 +2,11 @@
   (:use [stacktraces.core :only [request] ]))
 
 
-(defn badges []
-  "Get the list of badges. See https://api.stackexchange.com/docs/badges"
-  (request "/badges"))
+(defn badges [& site]
+  "Get the list of badges. See https://api.stackexchange.com/docs/badges.
+Site name can be supplied, otherwise defaults to 'stackoverflow'."
+  ([] (request "/badges?site=stackoverflow"))
+  ([site] (request (str "/badges?site=" site))))
 
 (defn by-ids [ids]
   "Get a list of badges by a vector of id's (up to 100)
