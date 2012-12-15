@@ -1,5 +1,5 @@
 (ns stacktraces.questions
-  (:use [stacktraces.core :only [requests]]))
+  (:use [stacktraces.core :only [request]]))
 
 (defn questions [params])
 
