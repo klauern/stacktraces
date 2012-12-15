@@ -9,3 +9,5 @@
   :repositories {"stuart" "http://stuartsierra.com/maven2"}
   :plugins [[lein-midje "2.0.1"]
             [codox "0.6.1"]])
+  
+                     
