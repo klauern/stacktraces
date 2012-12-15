@@ -1,8 +1,11 @@
 (defproject stacktraces "1.0.0-SNAPSHOT"
   :description "http REST client for the v2.0 StackExchange API (http://api.stackoverflow.com)"
-  :dependencies [[org.clojure/clojure "1.3.0"]
-                 [clj-http "0.3.3"]
-                 [cheshire "2.2.0"]]
-  :dev-dependencies [[marginalia "0.7.0-SNAPSHOT"]
-                     [midje "1.3.1" :exclusions [org.clojure/clojure]]
-                     [lein-midje "1.0.8"]])
+  :dependencies [[org.clojure/clojure "1.4.0"]
+                 [clj-http "0.6.2"]
+                 [cheshire "5.0.1"]
+                 [midje "1.5-alpha2" :scope "test"]
+                 [com.stuartsierra/lazytest "1.2.3" :scope "test"]
+                 [bultitude "0.2.0" :exclusions [org.clojure/clojure]]]
+  :repositories {"stuart" "http://stuartsierra.com/maven2"}
+  :plugins [[lein-midje "2.0.1"]
+            [codox "0.6.1"]])
