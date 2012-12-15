@@ -1,5 +1,6 @@
-(defproject stacktraces "1.0.0-SNAPSHOT"
+(defproject org.clojars.bruz/stacktraces "0.1.0"
   :description "http REST client for the v2.0 StackExchange API (http://api.stackoverflow.com)"
+  :url "http://github.com/bruz/stacktraces"
   :dependencies [[org.clojure/clojure "1.3.0"]
                  [clj-http "0.3.3"]
                  [cheshire "2.2.0"]]
