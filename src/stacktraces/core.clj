@@ -7,16 +7,22 @@
 
 ;; I'm not letting it throw exceptions, which I know I should, but I
 ;; don't know how to wrap it properly (yet).  This is a TODO
-(def default-http-params {:throw-exceptions false :ignore-unknown-host? true :as :json})
+(def default-http-params {:throw-exceptions false
+                          :ignore-unknown-host? true
+                          :as :json})
+
+(def default-query-params {:site "stackoverflow"})
 
 (def url "http://api.stackexchange.com/2.0")
 
 (defn request
   "make an HTTP GET request agains the API, passing in any optional query params"
-  ([api-method] 
+  ([api-method]
     (http/get (str url api-method) default-http-params))
   ([api-method params]
-     (http/get (str url api-method "?") (merge default-http-params {:query-params params}))))
+    (let [query-params (merge default-query-params params)]
+      (http/get (str url api-method "?")
+        (merge default-http-params {:query-params query-params})))))
 
 (defn get-errors
   "List all of the error types in the StackExchange world.  If passed an err-code, look it up and return the right value for the error explaining what it means."
