@@ -5,7 +5,7 @@
                  [cheshire "5.0.1"]
                  [midje "1.5-alpha2" :scope "test"]
                  [com.stuartsierra/lazytest "1.2.3" :scope "test"]
-                 [bultitude "0.2.0" :exclusions [org.clojure/clojure]]]
+                 ]
   :repositories {"stuart" "http://stuartsierra.com/maven2"}
   :plugins [[lein-midje "2.0.1"]
             [codox "0.6.1"]])
